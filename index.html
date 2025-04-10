@@ -1,134 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1484/1484799.png">
-</head>
-<body>
-    <style>
-        * {
-            font-family: sans-serif;
-            letter-spacing: 3px;
-        }
-
-        .main {
-            /* border: solid 1px gray; */
-            height: 80vh;
-            width: 190vh;
-            margin: auto;
-        }
-
-        h3 {
-            border: solid 2px gray;
-            text-align: center;
-            border-left: none;
-            border-right: none;
-            border-top: none;
-            padding: 2vh;
-
-        }
-
-        #form {
-            display: flex;
-            flex-direction: column;
-            gap: 5vh;
-            width: 90vh;
-            margin: auto;
-        }
-
-        input {
-            padding: 12px;
-            background-color: rgb(211, 223, 223);
-            border: none;
-        }
-
-        #btn {
-            width: 40vh;
-            padding: 9px;
-            margin: auto;
-            background-color: rgb(200, 241, 241);
-            border: none;
-        }
-
-        #btn:hover {
-            background-color: rgb(116, 236, 236);
-        }
-    </style>
-</head>
-
-<body>
-    <div class="main">
-            <h3>LOGIN FORM</h3>
-            <div id="form">
-                <input type="text"  placeholder="First Name" id="fname">
-                <input type="text"  placeholder="Last Name" id="lname">
-                <input type="email"  placeholder="Email" id="email">
-                <input type="number"  placeholder="Mobile No." id="mobileno">
-                <input type="password"   placeholder="Password" id="password">
-                <input type="password"  placeholder="Confirm Password"
-                    id="cpassword">
-                <button id="btn" onclick="submitData()">SUBMIT</button>
-            </div>
-
-    </div>
-</body>
-<script>
-    let submitData =()=>{
-        let fname = document.getElementById("fname").value
-    let lname = document.getElementById("lname").value
-    let email = document.getElementById("email").value
-    let mobileno = document.getElementById("mobileno").value
-    let password = document.getElementById("password").value
-    let cpassword = document.getElementById("cpassword").value
-let Data ={
-    "fname": fname,
-    "lname":lname,
-    "email":email,
-    "mobileno":mobileno,
-    "password":password,
-    "cpassword":cpassword
-}
-
-    
-        
-        if (fname.value == "") {
-            alert("Please Enter Your First Name!");
-        }
-        else if (lname.value == "") {
-            alert("Please Enter Your Last Name!");
-        }
-        else if (email.value == "") {
-            alert("Please Enter Your Email!");
-        }
-        else if (mobileno.value == "") {
-            alert("Please Enter Your Mobile No.!");
-        }
-        else if (password.value == "") {
-            alert("Please Enter Your Password!");
-        }
-        else if (cpassword.value == "") {
-            alert("Please Enter Your Confirm Password");
-        }
-        else if (cpassword.value !== password.value) {
-            alert("Confirm Password Is Not Same As Password!");
-        } else {
-            localStorage.setItem("obj",JSON.stringify(Data));
-            fname.value = "";
-            lname.value = "";
-            email.value = "";
-            mobileno.value = "";
-            password.value = "";
-            cpassword.value = "";
-            alert("You Are Now Loggedin!")
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Form</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1484/1484799.png">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+      letter-spacing: 1px;
+      margin: 0;
+      padding: 0;
     }
-    
-    
 
-</script>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f8f8;
+    }
 
-</html>
+    .main {
+      width: 100%;
+      max-width: 500px;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid gray;
+      padding-bottom: 1rem;
+    }
+
+    #form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input {
+      padding: 12px;
+      background-color: rgb(230, 240, 240);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #btn {
+      padding: 12px;
+      background-color: rgb(200, 241, 241);
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #btn:hover {
+      background-color: rgb(116, 236, 236);
+    }
+
+    @media (max-width: 600px) {
+      .main {
+        padding: 1rem;
+        margin: 1rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h3>LOGIN FORM</h3>
+    <div id="form">
+      <input type="text" placeholder="First Name" id="fname" />
+      <input type="text" placeholder="Last Name" id="lname" />
+      <input type="email" placeholder="Email" id="email" />
+      <input type="number" placeholder="Mobile No." id="mobileno" />
+      <input type="password" placeholder="Password" id="password" />
+      <input type="password" placeholder="Confirm Password" id="cpassword" />
+      <button id="btn" onclick="submitData()">SUBMIT</button>
+    </div>
+  </div>
+
+  <script>
+    const submitData = () => {
+      const fname = document.getElementById("fname");
+      const lname = document.getElementById("lname");
+      const email = document.getElementById("email");
+      const mobileno = document.getElementById("mobileno");
+      const password = document.getElementById("password");
+      const cpassword = document.getElementById("cpassword");
+
+      const Data = {
+        fname: fname.value,
+        lname: lname.value,
+        email: email.value,
+        mobileno: mobileno.value,
+        password: password.value,
+        cpassword: cpassword.value
+      };
+
+      if (!fname.value) {
+        alert("Please Enter Your First Name!");
+      } else if (!lname.value) {
+        alert("Please Enter Your Last Name!");
+      } else if (!email.value) {
+        alert("Please Enter Your Email!");
+      } else if (!mobileno.value) {
+        alert("Please Enter Your Mobile No.!");
+      } else if (!password.value) {
+        alert("Please Enter Your Password!");
+      } else if (!cpassword.value) {
+        alert("Please Enter Your Confirm Password!");
+      } else if (cpassword.value !== password.value) {
+        alert("Confirm Password Is Not Same As Password!");
+      } else {
+        localStorage.setItem("obj", JSON.stringify(Data));
+        fname.value = "";
+        lname.value = "";
+        email.value = "";
+        mobileno.value = "";
+        password.value = "";
+        cpassword.value = "";
+        alert("You Are Now Logged in!");
+      }
+    };
+  </script>
 </body>
 </html>
